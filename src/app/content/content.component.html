@@ -1,0 +1,41 @@
+
+<div class="content">
+	<div class="filters">
+		<div class="container">
+			<div class="row">
+				<div>
+					<h2>Gender</h2>
+					<input type="checkbox" name="filter" (change)="filterData($event, 'gender', 'men')"> Men
+					<input type="checkbox" name="filter" (change)="filterData($event, 'gender', 'women')"> Women
+				</div>
+				<div>
+					<h2>Brand</h2>
+					<div *ngFor="let brand of brandList;let indexOfelement=index;">
+						<input type="checkbox" name="filter" (change)="filterData($event, 'brand', indexOfelement)"> {{brand}}
+					</div>
+					
+				</div>
+			</div>
+		</div>
+
+
+		<div class="container">
+			<div class="row">
+				<h2>Sort By</h2>
+				<div *ngFor="let sortBy of itemList.sortOptions;let indexOfelement=index;">
+					<input type="radio" name="sortBy" (change)="sortByFunction(indexOfelement)"> {{sortBy}}
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div *ngFor="let product of filteredproductList" class="productListing">
+				<img src="{{product.searchImage}}" height="150" width="150">
+				<h2>{{product.product}}</h2>
+				<p>{{product.additionalInfo}}</p>
+			</div>
+		</div>
+	</div>
+</div>
